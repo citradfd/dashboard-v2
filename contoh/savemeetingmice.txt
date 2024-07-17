@@ -1,0 +1,34 @@
+        // data MEETING REQUIREMENT
+        $validatedData = $request->validate([
+            'start_datemeeting' => 'nullable|date',
+            'daysmeeting' => 'nullable|max:255',
+            'end_datemeeting' => 'nullable|date',
+            'package_meeting' => 'nullable|min:1',
+            'pricemeeting' => 'nullable|min:1',
+            'paxmeeting' => 'nullable|min:1', 
+        ]);
+
+
+        $dataMeet_require = new MeetingRequirment;
+        $dataMeet_require->idquotation = $idquotation;
+        if ($validatedData['start_datemeeting']) {
+            $dataMeet_require->start_datemeeting = $validatedData['start_datemeeting'];
+        }
+        if ($validatedData['daysmeeting']) {
+            $dataMeet_require->daysmeeting = $validatedData['daysmeeting'];
+        }
+        if ($validatedData['end_datemeeting']) {
+            $dataMeet_require->end_datemeeting = $validatedData['end_datemeeting'];
+        }
+        if ($validatedData['package_meeting']) {
+            $dataMeet_require->package_meeting = $validatedData['package_meeting'];
+        }
+        if ($validatedData['pricemeeting']) {
+            $dataMeet_require->pricemeeting = $validatedData['pricemeeting'];
+        }
+        if ($validatedData['paxmeeting']) {
+            $dataMeet_require->paxmeeting = $validatedData['paxmeeting'];
+        }
+        $dataMeet_require->tipe = 'Mice';
+        $dataMeet_require->total = $dataMeet_require->daysmeeting * $dataMeet_require->pricemeeting * $dataMeet_require->paxmeeting;
+        $dataMeet_require->save();

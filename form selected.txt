@@ -1,0 +1,673 @@
+
+                <!-- Form yang akan muncul jika Mice dipilih -->
+                <form v-if="selectedEvent === 'Mice'">
+                <!-- Isi form untuk Mice -->
+                            <div class="col-md-321">
+                                <hr>
+                                <h4>Room Requirement</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Check-in</th>
+                                            <th>Night(s)</th>
+                                            <th>Check-out</th>
+                                            <th style="width:20%">Bed Type</th>
+                                            <th style="width:20%">Room Type</th>
+                                            <th style="width:20%">Week Type</th>
+                                            <th>Room(s)</th>
+                                            <th style="width:20%">Room Rate</th>
+                                            <th style="width:20%">Total</th>
+                                            <th >Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="roomrequirementlist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="date" class="form-control input-sm datepicker" id="checkinroomrequirement">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="night" name="night" value="1">
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="date" class="form-control input-sm datepicker" id="checkoutroomrequirement">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="bedtype" class="form-control input-sm" style="width:100%">
+                                                    <option value="TWIN BED">TWIN BED</option>
+                                                    <option value="KING BED">KING BED</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select id="idroom" class="form-control input-sm" style="width:100%"><option value="108">Superior </option></select>
+                                            </td>
+                                            <td>
+                                                <select id="weektype" class="form-control input-sm" style="width:100%">
+                                                    <option value="WEEKDAY">WEEKDAY</option>
+                                                    <option value="WEEKEND">WEEKEND</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="room" name="room" value="1">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="rate" name="rate">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totalrate" readonly="">
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" id="addroomrequirement">Add</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
+                            </div>
+
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Meeting Requirement</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Start Date</th>
+                                            <th>Day(s)</th>
+                                            <th>End Date</th>
+                                            <th>Package</th>
+                                            <th>Price</th>
+                                            <th>Pax</th>
+                                            <th>Total</th>
+                                            <th>#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="meetinglist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="date" class="form-control input-sm date" id="startmeeting">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="daymeeting" value="1">
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="date" class="form-control input-sm date" id="endmeeting">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="idmeetingpackage" class="form-control input-sm" style="width:100%" ><option value="">- Choose -</option></select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="pricemeeting" >
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="paxmeeting" value="1" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totalmeeting" readonly="" >
+                                                <input type="number" class="form-control input-sm" id="idmeetingpackage" style="display: none;">
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" id="addmeeting" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Room Rental</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Start Date</th>
+                                            <th>Day(s)</th>
+                                            <th>End Date</th>
+                                            <th>Venue</th>
+                                            <th>Price</th>
+                                            <th>Total</th>
+                                            <th>Pax</th>
+                                            <th class="text-center">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="venuelist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="date" class="form-control input-sm datepicker" id="startroomrental" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="dayroomrental" value="1" >
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="date" class="form-control input-sm datepicker" id="endroomrental"  >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="idmeetingroomrental" class="form-control input-sm" style="width:100%" ><option value="">- Choose -</option></select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="pricevenue" >
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="totalpricevenue" readonly="" >
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="venuepax" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" title="Add" id="addroomrental" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+<div class="col-md-12">
+                                <hr>
+                                <h4>Additional Charge</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Start Date</th>
+                                            <th>Day(s)</th>
+                                            <th>End Date</th>
+                                            <th>Description</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                            <th>Total</th>
+                                            <th class="text-center">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="additionallist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="date" class="form-control input-sm datepicker" id="startadd" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="dayadd" value="1" >
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="date" class="form-control input-sm datepicker" id="endadd" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="idadditionaladd" class="form-control input-sm" style="width:100%" ><option value="">- Choose -</option></select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="qtyadd" value="1" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="priceadd" readonly="" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totaladd" readonly="" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" title="Add" id="addadd" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                </form>
+
+                <!-- Form yang akan muncul jika Wedding dipilih -->
+                <form v-if="selectedEvent === 'Wedding'">
+                <!-- Isi form untuk Wedding -->
+
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Room Requirement</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Check-in</th>
+                                            <th>Night(s)</th>
+                                            <th>Check-out</th>
+                                            <th>Bed Type</th>
+                                            <th>Room Type</th>
+                                            <th>Week Type</th>
+                                            <th>Room(s)</th>
+                                            <th>Room Rate</th>
+                                            <th>Total</th>
+                                            <th>#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="roomrequirementlist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="checkinroomrequirement" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="night" name="night" value="1" >
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm" id="checkoutroomrequirement" readonly="" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="bedtype" class="form-control input-sm" style="width:100%" >
+                                                    <option value="TWIN BED">TWIN BED</option>
+                                                    <option value="KING BED">KING BED</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select id="idroom" class="form-control input-sm" style="width:100%" ><option value="108">Superior </option></select>
+                                            </td>
+                                            <td>
+                                                <select id="weektype" class="form-control input-sm" style="width:100%" >
+                                                    <option value="WEEKDAY">WEEKDAY</option>
+                                                    <option value="WEEKEND">WEEKEND</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="room" name="room" value="1" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="rate" name="rate" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totalrate" readonly="" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" id="addroomrequirement" ><i class="fa fa-plus">Add</i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
+                            </div>
+                
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Package Requirement</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Start Date</th>
+                                            <th>Day(s)</th>
+                                            <th>End Date</th>
+                                            <th>Package Name</th>
+                                            <th>Price/Pax</th>
+                                            <th>No of Pax</th>
+                                            <th>Total</th>
+                                            <th>#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="packagerequirementlist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="startpackagerequirement" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="day" name="day" value="1" >
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm" id="endpackagerequirement" readonly="" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="idpackage" class="form-control input-sm" style="width:100%" ><option value="">- Choose -</option></select>
+
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="pricepackagepax" name="pricepackagepax" >
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="packagepax" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totalpackagepax" readonly="" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" id="addpackagerequirement" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Additional Charge</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Start Date</th>
+                                            <th>Day(s)</th>
+                                            <th>End Date</th>
+                                            <th>Description</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                            <th>Total</th>
+                                            <th class="text-center">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="additionallist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="startadd" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="dayadd" value="1" >
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="endadd" readonly="" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="idadditionaladd" class="form-control input-sm" style="width:100%" ><option value="">- Choose -</option></select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="qtyadd" value="1" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="priceadd" readonly="" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totaladd" readonly="" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" title="Add" id="addadd" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Offering Stall</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Stall</th>
+                                            <th>Price</th>
+                                            <th>Pax</th>
+                                            <th>Total</th>
+                                            <th class="text-center">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="stalllist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="datestall" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="idstall" class="form-control input-sm" style="width:100%" ><option value="">- Choose -</option></select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="pricestall" >
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="paxstall" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totalstall" readonly="" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" title="Add" id="addstall" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                </form>
+
+                <!-- Form yang akan muncul jika Social Event dipilih -->
+                <form v-if="selectedEvent === 'Social Event'">
+                <!-- Isi form untuk Social Event -->
+
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Room Requirement</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Check-in</th>
+                                            <th>Night(s)</th>
+                                            <th>Check-out</th>
+                                            <th>Bed Type</th>
+                                            <th>Room Type</th>
+                                            <th>Week Type</th>
+                                            <th>Room(s)</th>
+                                            <th>Room Rate</th>
+                                            <th>Total</th>
+                                            <th>#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="roomrequirementlist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="checkinroomrequirement" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="night" name="night" value="1" >
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm" id="checkoutroomrequirement" readonly="" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="bedtype" class="form-control input-sm" style="width:100%" >
+                                                    <option value="TWIN BED">TWIN BED</option>
+                                                    <option value="KING BED">KING BED</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select id="idroom" class="form-control input-sm" style="width:100%" ><option value="108">Superior </option></select>
+                                            </td>
+                                            <td>
+                                                <select id="weektype" class="form-control input-sm" style="width:100%" >
+                                                    <option value="WEEKDAY">WEEKDAY</option>
+                                                    <option value="WEEKEND">WEEKEND</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="room" name="room" value="1" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="rate" name="rate" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totalrate" readonly="" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" id="addroomrequirement" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
+                            </div>
+                
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Package Requirement</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Start Date</th>
+                                            <th>Day(s)</th>
+                                            <th>End Date</th>
+                                            <th>Package Name</th>
+                                            <th>Price/Pax</th>
+                                            <th>No of Pax</th>
+                                            <th>Total</th>
+                                            <th>#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="packagerequirementlist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="startpackagerequirement">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="day" name="day" value="1" >
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm" id="endpackagerequirement" readonly="" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="idpackage" class="form-control input-sm" style="width:100%" ><option value="">- Choose -</option></select>
+
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="pricepackagepax" name="pricepackagepax" >
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="packagepax" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totalpackagepax" readonly="" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" id="addpackagerequirement" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Additional Charge</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Start Date</th>
+                                            <th>Day(s)</th>
+                                            <th>End Date</th>
+                                            <th>Description</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                            <th>Total</th>
+                                            <th class="text-center">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="additionallist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="startadd" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="dayadd" value="1" >
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="endadd" readonly="" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="idadditionaladd" class="form-control input-sm" style="width:100%" ><option value="">- Choose -</option></select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="qtyadd" value="1" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="priceadd" readonly="" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totaladd" readonly="" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" title="Add" id="addadd" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-12">
+                                <hr>
+                                <h4>Offering Stall</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Stall</th>
+                                            <th>Price</th>
+                                            <th>Pax</th>
+                                            <th>Total</th>
+                                            <th class="text-center">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="stalllist">
+                                        <tr>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control input-sm datepicker" id="datestall" >
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select id="idstall" class="form-control input-sm" style="width:100%" ><option value="">- Choose -</option></select>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="pricestall" >
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control input-sm" id="paxstall" >
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" id="totalstall" readonly="" >
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-primary" title="Add" id="addstall" >Add<i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                </form>

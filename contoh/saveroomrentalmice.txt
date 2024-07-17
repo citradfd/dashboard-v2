@@ -1,0 +1,35 @@
+
+        $idquotation = $data->id;
+        $dataRoom_require = new RoomRequirment;
+        $dataRoom_require->idquotation = $idquotation;
+
+        if ($validatedData['checkin']) {
+            $dataRoom_require->checkin = $validatedData['checkin'];
+        }
+        
+        if ($validatedData['nights']) {
+            $dataRoom_require->nights = $validatedData['nights'];
+        }
+
+        if ($validatedData['checkout']) {
+            $dataRoom_require->checkout = $validatedData['checkout'];
+        }
+
+        if ($validatedData['bedtype']) {
+            $dataRoom_require->bedtype = $validatedData['bedtype'];
+        }
+
+        if ($validatedData['roomtype']) {
+            $dataRoom_require->roomtype = $validatedData['roomtype'];
+        }
+
+        if ($validatedData['rooms']) {
+            $dataRoom_require->rooms = $validatedData['rooms'];
+        }
+
+        if ($validatedData['roomrate']) {
+            $dataRoom_require->roomrate = $validatedData['roomrate'];
+        }
+        $dataRoom_require->tipe = 'Mice';
+        $dataRoom_require->total = $dataRoom_require->nights * $dataRoom_require->rooms * $dataRoom_require->roomrate;
+        $dataRoom_require->save();
